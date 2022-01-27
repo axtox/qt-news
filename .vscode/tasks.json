@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/core-qt.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish linux",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/core-qt.csproj",
+                "/property:GenerateFullPaths=true",
+                "/property:PublishReadyToRun=true",
+                "/consoleloggerparameters:NoSummary",
+                "-r", "arch-x64",
+                "-c", "Release"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish macintosh",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/core-qt.csproj",
+                "/consoleloggerparameters:NoSummary",
+                "--self-contained=true",
+                "-r", "osx.10.15-x64",
+                "-c", "Release"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/core-qt.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
